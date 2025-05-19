@@ -13,7 +13,7 @@ period_start = "2010-01-01"
 period_end = "2025-05-01"
 risk_free_rate = 0.03 / 252
 portfolio_start = 1
-use = "yfinance" # or "yfinance
+use = "yfinance" # or "polygon"
 client = BaseClient("polygon API code here")
 # want the hour 15, 50-minute timeframe.
 def get_daily_near_closing_value(ticker=None, hour=15, minute=50):
@@ -45,7 +45,6 @@ data = None
 if use == "yfinance":
     data = yf.download(ticker_list, start=period_start, end=period_end)[["Close"]]["Close"]
 elif use == "polygon":
-    #ticker_list = ["SPY", "I:VIX", "I:VIX1D", "I:VIX3M", "SVXY", "VIXY", "SVIX"]
     spy = get_daily_near_closing_value(ticker="SPY")
     spxl = get_daily_near_closing_value(ticker="SPXL")
     tlt = get_daily_near_closing_value(ticker="TLT")
@@ -254,7 +253,6 @@ plt.show()
 
 
 
-# We'll compare the ideal strategy to buy+hold of the components, and SPY
 plt.figure(dpi=150)
 plt.xticks(rotation=45)
 plt.suptitle(f"Comparison of strategies together")
@@ -271,7 +269,7 @@ plt.yscale(yscale)
 plt.show()
 
 
-# Now, let's get some statistics on our Strategy versus the buy+hold strategies of SPY and the trade components.
+# Now, let's get some statistics on our Strategy versus 
 for ticker in final_list:
     print(f"{ticker} Sharpe Ratio: ", round((data[f"{ticker}_ret"].mean() - risk_free_rate) / data[f"{ticker}_ret"].std() * np.sqrt(252),2),
     f" Sortino Ratio: ", round((data[f"{ticker}_ret"].mean() - risk_free_rate) / data[data[f"{ticker}_ret"] < 0][f"{ticker}_ret"].std() * np.sqrt(252),2),
