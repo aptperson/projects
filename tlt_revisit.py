@@ -1,6 +1,6 @@
 # So we're looking at TLT trades again
 # If we guess that an effect is manifested when something happens in the market...
-# We should isolate and actually invest only when that something happens!
+# Why not see what the returns are when it happens instead of all the time???
 
 
 import yfinance as yf
