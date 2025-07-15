@@ -93,8 +93,8 @@ or_values = or_values[["date_str", "OR_high_day", "OR_low_day"]]
 print(or_values.head())
 
 qqq = pd.merge(qqq, or_values, how="left", left_on="date_str", right_on="date_str")
-qqq["OR_high_day"][qqq["bar"] <=4] = np.nan
-qqq["OR_low_day"][qqq["bar"] <=4] = np.nan
+qqq["OR_high_day"][qqq["bar"] <=opening_range -1] = np.nan
+qqq["OR_low_day"][qqq["bar"] <=opening_range - 1] = np.nan
 
 qqq["above_OR_high"] = np.where(qqq["close"].shift(1) > qqq["OR_high_day"], 1, 0)
 qqq["below_OR_low"] = np.where(qqq["close"].shift(1) < qqq["OR_low_day"], 1, 0)
