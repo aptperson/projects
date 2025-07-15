@@ -150,10 +150,10 @@ qqq["put/call_vix"][(qqq["OR_trigger_vix"] == 1) & (qqq["OR_trigger_vix"].shift(
 # Make a regular, and vix-effected dataset.
 qqq_reg = qqq[(qqq["OR_trigger"] == 1) & (qqq["OR_trigger"].shift(1) == 0)]
 
-# Let's try seeing what happens if the VIX is up or down on Open??
+# Let's try seeing what happens if we trade when the VIX is down at the ORB trigger point?
 qqq_vix= qqq[(qqq["OR_trigger_vix"] == 1) & (qqq["OR_trigger_vix"].shift(1) == 0)]
 
-
+# Take a look at the regular and VIX-dependent data
 print(qqq_reg.tail(50).to_string())
 print(qqq_vix.tail(50).to_string())
 
