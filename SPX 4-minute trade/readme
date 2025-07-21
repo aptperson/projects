@@ -1,0 +1,5 @@
+"""
+folder contains python code for a backtest on 3:51-3:54 SPX options trade.
+folder also contains 2+ years of data for Market-On-Close order imbalances released at 3:50 PM each market day
+when available, the MOC Imbalances cover the S&P 500, the Nasdaq, the Dow, and the Mag 7.
+"""
